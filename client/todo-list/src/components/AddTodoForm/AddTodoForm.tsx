@@ -1,0 +1,39 @@
+import { FormEvent, useState } from "react";
+
+interface AddTodoForm {
+  addTodo: (todo: object) => void;
+}
+
+const AddTodoForm = ({ addTodo }: AddTodoForm) => {
+  const [todoValue, setTodoValue] = useState("");
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    addTodo({
+      todo: todoValue,
+    });
+    console.log(`submitted!`);
+  };
+  return (
+    <form className="mb-3" onSubmit={handleSubmit}>
+      <label className="form-label" htmlFor="add-todo">
+        Add Todo
+      </label>
+      <div className="add-todo-form d-flex gap-2">
+        <input
+          id="add-todo"
+          className="form-control"
+          type="text"
+          placeholder="Add new todo now..."
+          value={todoValue}
+          onChange={(e) => setTodoValue(e.target.value)}
+          required
+        />
+        <button className="btn btn-primary" type="submit">
+          Add
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default AddTodoForm;
