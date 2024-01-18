@@ -1,7 +1,12 @@
 import { FormEvent, useState } from "react";
 
+interface todo {
+  id?: number;
+  todo: string;
+}
+
 interface AddTodoForm {
-  addTodo: (todo: object) => void;
+  addTodo: (todo: todo) => void;
 }
 
 const AddTodoForm = ({ addTodo }: AddTodoForm) => {
