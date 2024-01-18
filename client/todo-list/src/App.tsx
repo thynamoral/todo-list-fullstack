@@ -69,12 +69,16 @@ function App() {
       });
   };
 
-  const editingtTodo = (todo: todo) => {
+  const showModal = (todo: todo) => {
     setIsEditting(true);
     setCurrentEdit({
       id: todo.id,
       todo: todo.todo,
     });
+  };
+
+  const closeModal = () => {
+    setIsEditting(false);
   };
 
   const editTodo = (todoId: number, edittedTodo: string) => {
@@ -113,13 +117,14 @@ function App() {
       <TodoList
         todoList={todoList}
         deleteTodo={deleteTodo}
-        editingtTodo={editingtTodo}
+        showModal={showModal}
       />
       {isEditting && (
         <EditModal
           todoId={currentEdit.id}
           value={currentEdit.todo}
           editTodo={editTodo}
+          closeModal={closeModal}
         />
       )}
     </div>

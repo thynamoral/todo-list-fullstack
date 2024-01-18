@@ -6,10 +6,10 @@ interface todo {
 interface TodoListProps {
   todoList: todo[] | null;
   deleteTodo: (todo: todo) => void;
-  editingtTodo: (todo: todo) => void;
+  showModal: (todo: todo) => void;
 }
 
-const TodoList = ({ todoList, deleteTodo, editingtTodo }: TodoListProps) => {
+const TodoList = ({ todoList, deleteTodo, showModal }: TodoListProps) => {
   return (
     <ul className="todo-list list-group ">
       {todoList?.map((todo) => (
@@ -21,7 +21,7 @@ const TodoList = ({ todoList, deleteTodo, editingtTodo }: TodoListProps) => {
           <button
             type="button"
             className="btn btn-outline-success"
-            onClick={() => editingtTodo(todo)}
+            onClick={() => showModal(todo)}
           >
             Edit
           </button>
