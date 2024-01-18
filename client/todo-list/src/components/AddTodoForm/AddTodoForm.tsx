@@ -16,6 +16,7 @@ const AddTodoForm = ({ addTodo }: AddTodoForm) => {
     addTodo({
       todo: todoValue,
     });
+    setTodoValue("");
     console.log(`submitted!`);
   };
   return (
